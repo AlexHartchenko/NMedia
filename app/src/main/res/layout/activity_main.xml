@@ -14,7 +14,7 @@
         android:layout_height="48dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/ic_launcher_foreground" />
+        android:src="@drawable/ic_launcher_foreground" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/authorName"
@@ -24,11 +24,11 @@
         android:layout_marginEnd="8dp"
         android:ellipsize="end"
         android:singleLine="true"
+        android:text="Нетология. Университет интернет профессий!"
         app:layout_constraintBottom_toTopOf="@id/date"
         app:layout_constraintEnd_toStartOf="@id/options"
         app:layout_constraintStart_toEndOf="@id/imageView"
-        app:layout_constraintTop_toTopOf="@id/imageView"
-        tools:text="Нетология. Университет интернет профессий!" />
+        app:layout_constraintTop_toTopOf="@id/imageView" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/date"
@@ -36,21 +36,24 @@
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:singleLine="true"
+        android:text="22.04.2022"
         app:layout_constraintBottom_toTopOf="@id/date"
         app:layout_constraintEnd_toEndOf="@id/authorName"
         app:layout_constraintStart_toStartOf="@id/authorName"
         app:layout_constraintTop_toBottomOf="@id/authorName"
-        tools:text="22.04.2022" />
+         />
 
     <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
         android:src="@drawable/ic_options_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints" />
 
 
     <androidx.constraintlayout.widget.Barrier
@@ -64,13 +67,13 @@
         android:id="@+id/text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/headerBarrier"
-        tools:text="Привет! Это новая нетология! Когда-то Нетология начиналась с
+        android:text="Привет! Это новая нетология! Когда-то Нетология начиналась с
 интенсивов по онлайн маркетингу. Затем появились курсы по дизайну, разработкеб
 аналитике и управлению. Мы растем сами и помогаем расти студентам: от новичков до уверенных профессионалов.
 Но самое важное остается с нами: мы верим, что в каждом уже есть сила, которая заставляет хотеть больше,
  целится выше, бежать быстрее. Наша миссия - помочь встать на путь роста и начать цепочку перемен
--> http://netolo.gy/fyb" />
+-> http://netolo.gy/fyb"
+        app:layout_constraintTop_toBottomOf="@id/headerBarrier" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/headerBarrier2"
@@ -83,11 +86,11 @@
         android:id="@+id/likes"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_margin="8dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_favorite_24"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/headerBarrier2"
-        android:layout_margin="8dp"
         tools:srcCompat="@drawable/ic_launcher_foreground" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -103,11 +106,11 @@
         android:id="@+id/shares"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_margin="8dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_share_24"
         app:layout_constraintStart_toEndOf="@id/likesCount"
         app:layout_constraintTop_toTopOf="@id/headerBarrier2"
-        android:layout_margin="8dp"
         tools:srcCompat="@drawable/ic_launcher_foreground" />
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -123,11 +126,11 @@
         android:id="@+id/looks"
         android:layout_width="24dp"
         android:layout_height="24dp"
+        android:layout_margin="8dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_baseline_remove_red_eye_24"
         app:layout_constraintEnd_toStartOf="@id/looksCount"
         app:layout_constraintTop_toTopOf="@id/headerBarrier2"
-        android:layout_margin="8dp"
         tools:srcCompat="@drawable/ic_launcher_foreground" />
 
 
