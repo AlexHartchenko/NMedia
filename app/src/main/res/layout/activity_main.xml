@@ -49,8 +49,9 @@
         android:background="@android:color/transparent"
         android:src="@drawable/ic_options_24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_TopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"/>
+
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/headerBarrier"
