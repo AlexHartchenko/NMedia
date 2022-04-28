@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
             published = "28 апреля 2022г. ",
             likes = 999,
             shared = 96,
-            looksCount = 990,
+            viewCount = 990,
             likedByMe = false
         )
         with(binding) {
@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             }
             likes.text = format(post.likes)
             shared.text = format(post.shared)
-            viewCount.text = format(post.looksCount)
+            viewCount.text = format(post.viewCount)
 
             like.setOnClickListener {
                 post.likedByMe = !post.likedByMe
@@ -58,7 +58,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             views.setOnClickListener {
-                viewCount.text = format(post.looksCount++)
+                viewCount.text = format(post.viewCount++)
             }
 
         }
