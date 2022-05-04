@@ -1,8 +1,12 @@
 package ru.netology.nmedia.data.impl
 
 import androidx.lifecycle.MutableLiveData
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
+import java.util.*
 
 
 class InMemoryPostRepository : PostRepository {
@@ -12,9 +16,27 @@ class InMemoryPostRepository : PostRepository {
             id = 0L,
             likes = 999,
             shared = 970,
-            viewCount = 960
+            viewCount = 960,
+            published = ""
         )
     )
+
+//    init {
+//        GlobalScope.launch {
+//            while (true) {
+//                delay(1000)
+//                val currentPost = checkNotNull(data.value) {
+//                    "Data value should not be null"
+//                }
+//
+//                val newPost = currentPost.copy(
+//                    published = Date().toString()
+//                )
+//                data.postValue(newPost)
+//
+//            }
+//        }
+//    }
 
     override fun like() {
         val currentPost = checkNotNull(data.value) {
