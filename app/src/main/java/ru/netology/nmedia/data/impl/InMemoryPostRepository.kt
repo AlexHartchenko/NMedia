@@ -18,9 +18,9 @@ class InMemoryPostRepository : PostRepository {
                 id = index + 1L,
                 author = "Alex",
                 content = "text of the Post #$index",
-                likes = 999,
-                shared = 970,
-                viewCount = 960,
+                likes = (0..999).random(),
+                shared = (0..1200).random(),
+                viewCount = (0..11960).random(),
                 published = ""
             )
         }

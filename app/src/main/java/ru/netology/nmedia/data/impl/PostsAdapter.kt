@@ -42,8 +42,8 @@ internal class PostsAdapter(
         private lateinit var post: Post
 
         init {
-            binding.like.setOnClickListener { onLikeClicked }
-            binding.shares.setOnClickListener { onSharedClicked }
+            binding.like.setOnClickListener { onLikeClicked(post) }
+            binding.shares.setOnClickListener { onSharedClicked(post) }
         }
 
         fun bind(post: Post) {
