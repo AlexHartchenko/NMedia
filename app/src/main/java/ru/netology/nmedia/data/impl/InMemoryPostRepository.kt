@@ -16,7 +16,7 @@ class InMemoryPostRepository : PostRepository {
         List(GENERATED_POSTS_AMOUNT) { index ->
             Post(
                 id = index + 1L,
-                author = "Ivan",
+                author = "Alex",
                 content = "text of the Post #$index",
                 likes = (0..999).random(),
                 reposts = (0..1999).random(),
