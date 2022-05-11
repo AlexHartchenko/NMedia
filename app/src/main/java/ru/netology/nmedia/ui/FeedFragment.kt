@@ -14,7 +14,7 @@ import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.FeedFragmentBinding
 import ru.netology.nmedia.viewModel.PostViewModel
 
-class feed_fragment : Fragment() {
+class FeedFragment : Fragment() {
 
     private val viewModel by viewModels<PostViewModel>()
 

@@ -3,7 +3,7 @@ package ru.netology.nmedia.ui
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.R
 
-class app_activity : AppCompatActivity(R.layout.app_activity)
+class AppActivity : AppCompatActivity(R.layout.app_activity)
 
 //{
 //

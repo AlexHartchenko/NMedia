@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NMedia">
         <activity
-            android:name=".ui.app_activity"
+            android:name=".ui.AppActivity"
             android:windowSoftInputMode="adjustResize"
             android:exported="true">
             <intent-filter>
