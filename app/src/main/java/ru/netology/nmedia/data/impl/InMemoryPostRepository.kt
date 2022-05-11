@@ -1,5 +1,6 @@
 package ru.netology.nmedia.data.impl
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
@@ -8,7 +9,7 @@ import java.util.*
 
 object InMemoryPostRepository : PostRepository {
 
-    private const val GENERATED_POSTS_AMOUNT = 15
+    private const val GENERATED_POSTS_AMOUNT = 19
 
     private var nextId = GENERATED_POSTS_AMOUNT.toLong()
 
@@ -18,6 +19,7 @@ object InMemoryPostRepository : PostRepository {
         }
 
 
+    @SuppressLint("SimpleDateFormat")
     override val data = MutableLiveData(
         List(GENERATED_POSTS_AMOUNT) { index ->
             Post(
@@ -27,7 +29,7 @@ object InMemoryPostRepository : PostRepository {
                 published = SimpleDateFormat("dd.MM.yyyy hh:mm").format(Date()),
                 likes = (0..999).random(),
                 reposts = (0..1999).random(),
-                views = (10..9099).random(),
+                views = (10..999).random(),
                 videoURL = if (index % 3 == 0) "https://www.youtube.com/watch?v=gJt946CyJO0" else "",
             )
         }

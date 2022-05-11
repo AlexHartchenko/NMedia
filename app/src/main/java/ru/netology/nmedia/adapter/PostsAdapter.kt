@@ -24,13 +24,11 @@ internal class PostsAdapter(
 
         return ViewHolder(
             binding,
-            interactionListener,
         )
     }
 
     class ViewHolder(
         private val binding: PostBinding,
-        listener: PostInteractionListener,
     ) : RecyclerView.ViewHolder(binding.root) {
 
         private lateinit var post: Post
