@@ -2,6 +2,8 @@ package ru.netology.nmedia.data.impl
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
+import java.text.SimpleDateFormat
+import java.util.*
 
 class InMemoryPostRepository : PostRepository {
 
@@ -18,9 +20,11 @@ class InMemoryPostRepository : PostRepository {
                 id = index + 1L,
                 author = "Alex",
                 content = "text of the Post #$index",
+                published = SimpleDateFormat("dd.MM.yyyy hh:mm").format(Date()),
                 likes = (0..999).random(),
                 reposts = (0..1999).random(),
                 views = (10..9099).random(),
+                videoURL = if (index % 3 == 0) "https://www.youtube.com/watch?v=gJt946CyJO0" else "",
             )
         }
     )
