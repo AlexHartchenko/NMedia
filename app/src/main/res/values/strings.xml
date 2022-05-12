@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="nmedia">NMedia!</string>
-    <string name="Netology" translatable="false">Netology</string>
+    <string name="netology">Netology</string>
     <string name="content_text" translatable="false">Привет это новая Нетология! Мы начинали с курсов об онлайн-маркетинге.
         Затем выросли в университет интернет-профессий: учили дизайнеров, аналитиков, программистов, менеджеров, маркетологов…
         Но обучать новым профессиям — это не предел. Мы продолжаем расти.
@@ -17,4 +17,17 @@
     <string name="countViews" translatable="false">1000</string>
     <string name="countLikes" translatable="false">1000</string>
     <string name="countReposts" translatable="false">1000</string>
+    <string name="menu_remove">Remove</string>
+    <string name="post_text">Post text...</string>
+    <string name="description_post_save">Save...</string>
+    <string name="menu_edit">Edit</string>
+    <string name="edit_message">Edit message</string>
+    <string name="description_edit_cancel">Cancel</string>
+    <string name="views">Views</string>
+    <string name="likes">Likes</string>
+    <string name="reposts">Reposts</string>
+    <string name="options">Options</string>
+    <string name="chooser_share_post">Share post</string>
+
 </resources>
+
