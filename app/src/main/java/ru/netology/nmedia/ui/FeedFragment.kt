@@ -16,72 +16,72 @@ import ru.netology.nmedia.adapter.PostsAdapter
 import ru.netology.nmedia.databinding.FeedFragmentBinding
 import ru.netology.nmedia.viewModel.PostViewModel
 
-class FeedFragment :Fragment(){
+class FeedFragment : Fragment() {
 
-private val viewModel by viewModels<PostViewModel>()
+    private val viewModel by viewModels<PostViewModel>()
 
-        override fun onCreate(savedInstanceState:Bundle?){
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel.sharePostContent.observe(this){postContent->
-        val intent=Intent().apply{
-        action=Intent.ACTION_SEND
-        putExtra(Intent.EXTRA_TEXT,postContent)
-        type="text/plain"
+        viewModel.sharePostContent.observe(this) { postContent ->
+            val intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, postContent)
+                type = "text/plain"
+            }
+
+            val shareIntent = Intent.createChooser(
+                intent, getString(R.string.chooser_share_post)
+            )
+            startActivity(shareIntent)
         }
 
-        val shareIntent=Intent.createChooser(
-        intent,getString(R.string.chooser_share_post)
-        )
-        startActivity(shareIntent)
+        viewModel.navigateToEditContentScreenEvent.observe(this) { initialContent ->
+            val direction = FeedFragmentDirections.fromFeedToPostEdit(initialContent)
+            findNavController().navigate(direction)
         }
 
-        viewModel.navigateToEditContentScreenEvent.observe(this){initialContent->
-        val direction=FeedFragmentDirections.fromFeedToPostEdit(initialContent)
-        findNavController().navigate(direction)
+        viewModel.navigateToViewContentScreenEvent.observe(this) { postId ->
+            val direction = FeedFragmentDirections.fromFeedToPostView(postId)
+            findNavController().navigate(direction)
         }
 
-        viewModel.navigateToViewContentScreenEvent.observe(this){postId->
-        val direction=FeedFragmentDirections.fromFeedToPostView(postId)
-        findNavController().navigate(direction)
+        viewModel.playVideoURL.observe(this) { videoURL ->
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(videoURL))
+            startActivity(intent)
         }
 
-        viewModel.playVideoURL.observe(this){videoURL->
-        val intent=Intent(Intent.ACTION_VIEW,Uri.parse(videoURL))
-        startActivity(intent)
-        }
+    }
 
-        }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = FeedFragmentBinding.inflate(layoutInflater, container, false).also { binding ->
 
-        override fun onCreateView(
-        inflater:LayoutInflater,
-        container:ViewGroup?,
-        savedInstanceState:Bundle?
-        )=FeedFragmentBinding.inflate(layoutInflater,container,false).also{binding->
-
-        val adapter=PostsAdapter(viewModel)
-        binding.postsRecyclerView.adapter=adapter
-        viewModel.data.observe(viewLifecycleOwner){posts->
-        adapter.submitList(posts)
+        val adapter = PostsAdapter(viewModel)
+        binding.postsRecyclerView.adapter = adapter
+        viewModel.data.observe(viewLifecycleOwner) { posts ->
+            adapter.submitList(posts)
         }
-        binding.fab.setOnClickListener{
-        viewModel.onAddClicked()
+        binding.fab.setOnClickListener {
+            viewModel.onAddClicked()
         }
 
         setFragmentResultListener(
-        requestKey=PostEditFragment.REQUEST_KEY
-        ){requestKey,bundle->
-        if(requestKey!=PostEditFragment.REQUEST_KEY)return@setFragmentResultListener
-            val newPostContent=bundle.getString(
-                    PostEditFragment.RESULT_KEY
-                    )?:return@setFragmentResultListener
+            requestKey = PostEditFragment.REQUEST_KEY
+        ) { requestKey, bundle ->
+            if (requestKey != PostEditFragment.REQUEST_KEY) return@setFragmentResultListener
+            val newPostContent = bundle.getString(
+                PostEditFragment.RESULT_KEY
+            ) ?: return@setFragmentResultListener
             viewModel.onButtonSaveClicked(newPostContent)
-                    }
+        }
 
-                    }.root
+    }.root
 
-                    companion object{
-                    const val TAG="FeedFragment"
-                    }
+    companion object {
+        const val TAG = "FeedFragment"
+    }
 
-                    }
+}

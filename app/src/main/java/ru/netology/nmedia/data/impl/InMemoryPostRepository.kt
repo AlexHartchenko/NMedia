@@ -21,13 +21,13 @@ object InMemoryPostRepository : PostRepository {
         List(GENERATED_POSTS_AMOUNT) { index ->
             Post(
                 id = index + 1L,
-                author = "Ivan",
-                content = "text of the Post #$index",
+                author = "Alex",
+                content = "Здесь могла бы быть Ваша реклама! тел№ $index",
                 published = SimpleDateFormat("dd.MM.yyyy hh:mm").format(Date()),
                 likes = (0..999).random(),
-                reposts = (0..1999).random(),
-                views = (10..9099).random(),
-                videoURL = if (index % 3 == 0) "https://www.youtube.com/watch?v=gJt946CyJO0" else "",
+                reposts = (0..99).random(),
+                views = (3..1199).random(),
+                videoURL = if (index % 4 == 0) "https://www.youtube.com/watch?v=gJt946CyJO0" else "",
             )
         }
     )
