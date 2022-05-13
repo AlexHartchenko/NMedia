@@ -61,7 +61,7 @@ class SharedPrefsPostRepository(
         posts = posts.map {
             if (it.id != postId) it
             else it.copy(
-                reposts = it.reposts + 10
+                reposts = it.reposts + 1
             )
         }
     }

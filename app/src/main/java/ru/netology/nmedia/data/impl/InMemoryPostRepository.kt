@@ -1,5 +1,6 @@
 package ru.netology.nmedia.data.impl
 
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
@@ -17,6 +18,7 @@ object InMemoryPostRepository : PostRepository {
             "Data value should not be null"
         }
 
+    @SuppressLint("SimpleDateFormat")
     override val data = MutableLiveData(
         List(GENERATED_POSTS_AMOUNT) { index ->
             Post(
@@ -46,7 +48,7 @@ object InMemoryPostRepository : PostRepository {
         data.value = posts.map {
             if (it.id != postId) it
             else it.copy(
-                reposts = it.reposts + 10
+                reposts = it.reposts + 1
             )
         }
     }

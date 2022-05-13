@@ -1,5 +1,6 @@
 package ru.netology.nmedia.viewModel
 
+import android.annotation.SuppressLint
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
@@ -8,6 +9,8 @@ import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.data.impl.InMemoryPostRepository
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.SingleLiveEvent
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SinglePostViewModel(
     application: Application
@@ -28,6 +31,7 @@ class SinglePostViewModel(
     fun getPostById(postId: Long) : Post? =
         repository.getById(postId)
 
+    @SuppressLint("SimpleDateFormat")
     fun onButtonSaveClicked(content: String) {
         if (content.isBlank()) return
 
@@ -35,9 +39,9 @@ class SinglePostViewModel(
             content = content
         ) ?: Post(
             id = PostRepository.NEW_POST_ID,
-            author = "Me",
+            author = "Тестировщик ))",
             content = content,
-            published = "today",
+            published = SimpleDateFormat("dd.MM.yyyy hh:mm").format(Date()),
 
             )
         repository.save(post)
@@ -46,6 +50,7 @@ class SinglePostViewModel(
 
     override fun onButtonRepostsClicked(post: Post) {
         sharePostContent.value = post.content
+        repository.repost(post.id)
     }
 
     override fun onButtonPlayVideoClicked(post: Post) {
