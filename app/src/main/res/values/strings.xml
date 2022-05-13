@@ -12,8 +12,8 @@
     <string name="authorName" translatable="false">Нетология. Меняем карьеру через образование</string>
     <string name="postDate" translatable="false">4 апр в 10:31</string>
     <string name="menu_remove">Remove</string>
-    <string name="post_text">Post text...</string>
-    <string name="description_post_save">Save...</string>
+    <string name="post_text">Post text…</string>
+    <string name="description_post_save">Save…</string>
     <string name="menu_edit">Edit</string>
     <string name="edit_message">Edit message</string>
     <string name="description_edit_cancel">Cancel</string>
