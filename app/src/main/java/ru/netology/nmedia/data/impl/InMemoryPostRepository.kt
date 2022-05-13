@@ -1,11 +1,15 @@
 package ru.netology.nmedia.data.impl
+
+import android.annotation.SuppressLint
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
 import java.text.SimpleDateFormat
 import java.util.*
 
-class InMemoryPostRepository : PostRepository {
+object InMemoryPostRepository : PostRepository {
+
+    private const val GENERATED_POSTS_AMOUNT = 15
 
     private var nextId = GENERATED_POSTS_AMOUNT.toLong()
 
@@ -14,17 +18,18 @@ class InMemoryPostRepository : PostRepository {
             "Data value should not be null"
         }
 
+    @SuppressLint("SimpleDateFormat")
     override val data = MutableLiveData(
         List(GENERATED_POSTS_AMOUNT) { index ->
             Post(
                 id = index + 1L,
                 author = "Alex",
-                content = "text of the Post #$index",
+                content = "Здесь могла бы быть Ваша реклама! тел№ $index",
                 published = SimpleDateFormat("dd.MM.yyyy hh:mm").format(Date()),
                 likes = (0..999).random(),
-                reposts = (0..1999).random(),
-                views = (10..9099).random(),
-                videoURL = if (index % 3 == 0) "https://www.youtube.com/watch?v=gJt946CyJO0" else "",
+                reposts = (0..99).random(),
+                views = (3..1199).random(),
+                videoURL = if (index % 4 == 0) "https://www.youtube.com/watch?v=gJt946CyJO0" else "",
             )
         }
     )
@@ -43,7 +48,7 @@ class InMemoryPostRepository : PostRepository {
         data.value = posts.map {
             if (it.id != postId) it
             else it.copy(
-                reposts = it.reposts + 10
+                reposts = it.reposts + 1
             )
         }
     }
@@ -68,7 +73,8 @@ class InMemoryPostRepository : PostRepository {
         }
     }
 
-    private companion object {
-        const val GENERATED_POSTS_AMOUNT = 15
+    override fun getById(postId: Long): Post? {
+        return posts.find { it.id == postId }
     }
+
 }

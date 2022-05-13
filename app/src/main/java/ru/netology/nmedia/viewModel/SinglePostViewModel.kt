@@ -12,7 +12,7 @@ import ru.netology.nmedia.util.SingleLiveEvent
 import java.text.SimpleDateFormat
 import java.util.*
 
-class PostViewModel(
+class SinglePostViewModel(
     application: Application
 ) : AndroidViewModel(application),
     PostInteractionListener {
@@ -21,20 +21,15 @@ class PostViewModel(
 
     val data by repository::data
 
-    val sharePostContent = SingleLiveEvent<String>()
-    val navigateToEditContentScreenEvent = SingleLiveEvent<String>()
-    val navigateToViewContentScreenEvent = SingleLiveEvent<Long>()
-    val playVideoURL = SingleLiveEvent<String>()
-
     val currentPost = MutableLiveData<Post?>(null)
 
-    fun setCurrentPost(postId: Long) {
-        currentPost.value = repository.getById(postId)
-    }
+    val sharePostContent = SingleLiveEvent<String>()
+    val navigateToEditContentScreenEvent = SingleLiveEvent<String>()
+    val playVideoURL = SingleLiveEvent<String>()
+    val removePost = SingleLiveEvent<Unit>()
 
-    fun onAddClicked() {
-        navigateToEditContentScreenEvent.call()
-    }
+    fun getPostById(postId: Long) : Post? =
+        repository.getById(postId)
 
     @SuppressLint("SimpleDateFormat")
     fun onButtonSaveClicked(content: String) {
@@ -44,18 +39,13 @@ class PostViewModel(
             content = content
         ) ?: Post(
             id = PostRepository.NEW_POST_ID,
-            author = "Тестировщик )",
+            author = "Тестировщик ))",
             content = content,
             published = SimpleDateFormat("dd.MM.yyyy hh:mm").format(Date()),
 
             )
         repository.save(post)
         currentPost.value = null
-    }
-
-    override fun onButtonLikesClicked(post: Post) {
-        repository.like(post.id)
-        setCurrentPost(post.id)
     }
 
     override fun onButtonRepostsClicked(post: Post) {
@@ -68,12 +58,16 @@ class PostViewModel(
     }
 
     override fun onContentClicked(post: Post) {
-        currentPost.value = post
-        navigateToViewContentScreenEvent.value = post.id
+
     }
 
-    override fun onButtonRemoveClicked(post: Post) =
+    override fun onButtonLikesClicked(post: Post) =
+        repository.like(post.id)
+
+    override fun onButtonRemoveClicked(post: Post) {
         repository.remove(post.id)
+        removePost.value = Unit
+    }
 
     override fun onButtonEditClicked(post: Post) {
         currentPost.value = post
