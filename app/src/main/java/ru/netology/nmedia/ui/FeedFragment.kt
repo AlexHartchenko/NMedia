@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.commit
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -51,10 +50,8 @@ class FeedFragment : Fragment() {
         }
 
         viewModel.navigateToPostContentScreenEvent.observe(this) { initialContent ->
-            findNavController().navigate(
-                R.id.toPostContentFragment,
-                PostContentFragment.createBundle(initialContent)
-            )
+            val direction = FeedFragmentDirections.toPostContentFragment(initialContent)
+            findNavController().navigate(direction)
         }
 
     }
