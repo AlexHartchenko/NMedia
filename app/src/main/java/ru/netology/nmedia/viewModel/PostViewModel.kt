@@ -8,7 +8,9 @@ import ru.netology.nmedia.adapter.PostInteractionListener
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.data.impl.FilePostRepository
 import ru.netology.nmedia.data.impl.InMemoryPostRepository
+import ru.netology.nmedia.data.impl.SQLiteRepository
 import ru.netology.nmedia.data.impl.SharedPrefsPostRepository
+import ru.netology.nmedia.db.AppDb
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.SingleLiveEvent
 import java.text.SimpleDateFormat
@@ -19,7 +21,11 @@ class PostViewModel(
 ) : AndroidViewModel(application), PostInteractionListener {
 
     private val repository: PostRepository =
-        FilePostRepository(application)
+        SQLiteRepository(
+            dao = AppDb.getInstance(
+                context = application
+            ).postDao
+        )
 
     val data by repository::data
 
