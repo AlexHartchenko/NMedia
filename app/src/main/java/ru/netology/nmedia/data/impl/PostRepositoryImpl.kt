@@ -2,6 +2,7 @@ package ru.netology.nmedia.data.impl
 
 import androidx.lifecycle.map
 import ru.netology.nmedia.data.PostRepository
+import ru.netology.nmedia.db.PostEntity
 import ru.netology.nmedia.db.PostsDao
 import ru.netology.nmedia.db.toEntity
 import ru.netology.nmedia.db.toModel
@@ -16,7 +17,8 @@ class PostRepositoryImpl(
     }
 
     override fun save(post: Post) {
-        dao.save(post.toEntity())
+       if (post.id == PostRepository.NEW_POST_ID) dao.insert(post.toEntity())
+       else dao.updateContentById(post.id, post.content)
     }
 
     override fun like(postId: Long) {
