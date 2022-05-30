@@ -14,4 +14,7 @@
     <string name="reposts">Поделилось</string>
     <string name="options">Действия</string>
     <string name="chooser_share_post">Поделиться</string>
+    <string name="notification_user_liked">Пользователь %1$s поставил лайк посту %2$s</string>
+    <string name="channel_remote_name">Server notifications</string>
+    <string name="channel_remote_description">Notifications from remote server</string>
 </resources>
