@@ -5,8 +5,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import ru.netology.nmedia.adapter.PostInteractionListener
 import ru.netology.nmedia.data.PostRepository
+
 import ru.netology.nmedia.data.impl.PostRepositoryImpl
 import ru.netology.nmedia.db.AppDb
+
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.SingleLiveEvent
 import java.text.SimpleDateFormat
@@ -14,6 +16,7 @@ import java.util.*
 
 class PostViewModel(
     application: Application
+
 ) : AndroidViewModel(application), PostInteractionListener {
 
     private val repository: PostRepository = PostRepositoryImpl(
@@ -21,6 +24,7 @@ class PostViewModel(
                 context = application
             ).postsDao
         )
+
 
     val data by repository::data
 
