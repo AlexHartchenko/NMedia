@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">NMedia</string>
-    <string name="nmedia">NMedia!</string>
+    <string name="app_name">NeRecipe</string>
+    <string name="NeRecipe">NeRecipe!</string>
     <string name="netology">Netology</string>
     <string name="content_text" translatable="false">Привет это новая Нетология! Мы начинали с курсов об онлайн-маркетинге.
         Затем выросли в университет интернет-профессий: учили дизайнеров, аналитиков, программистов, менеджеров, маркетологов…
