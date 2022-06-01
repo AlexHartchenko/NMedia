@@ -60,7 +60,9 @@
         android:layout_height="0dp"
         app:barrierDirection="bottom"
         app:barrierMargin="@dimen/common_spacing"
-        app:constraint_referenced_ids="avatar, postDate, options" />
+        app:constraint_referenced_ids="avatar, postDate, options"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="72dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/mainContent"
@@ -97,7 +99,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        app:constraint_referenced_ids="videoContent,buttonPlayVideo" />
+        app:constraint_referenced_ids="videoContent,buttonPlayVideo"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/footerBarrier"
@@ -105,7 +109,9 @@
         android:layout_height="0dp"
         app:barrierDirection="bottom"
         app:barrierMargin="@dimen/common_spacing"
-        app:constraint_referenced_ids="mainContent,videoContent" />
+        app:constraint_referenced_ids="mainContent,videoContent"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="246dp" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/iconViews"
@@ -143,5 +149,15 @@
         app:layout_constraintStart_toEndOf="@id/buttonLikes"
         app:layout_constraintTop_toBottomOf="@id/footerBarrier"
         tools:text="10K" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/headerBarrier3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:barrierMargin="@dimen/common_spacing"
+        app:constraint_referenced_ids="buttonLikes, buttonReposts, iconViews"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="298dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
